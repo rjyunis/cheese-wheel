@@ -15,7 +15,7 @@ use mouce::Mouse;
 // use mouce::MouseActions;
 
 // Interact with windows
-use winapi::um::winuser::{GetCursorPos, WindowFromPoint, GetWindowTextW, GetWindowTextLengthW, SetLayeredWindowAttributes, LWA_ALPHA, LWA_COLORKEY, SetWindowLongPtrW, GWL_EXSTYLE, WS_EX_LAYERED, GetWindowLongPtrW};
+use winapi::um::winuser::{GetCursorPos, WindowFromPoint, GetWindowTextW, GetWindowTextLengthW, SetLayeredWindowAttributes, LWA_ALPHA, LWA_COLORKEY, SetWindowLongPtrW, GWL_EXSTYLE, WS_EX_LAYERED, GetWindowLongPtrW, WS_EX_TRANSPARENT};
 use winapi::um::winnt::WCHAR;
 use winapi::shared::windef::{POINT, COLORREF};
 // use winapi::shared::windef::HWND;
@@ -52,7 +52,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Set WS_EX_LAYERED extended style
     let current_style = unsafe { GetWindowLongPtrW(window_handle, GWL_EXSTYLE) as DWORD };
-    let new_style = current_style | WS_EX_LAYERED;
+    let new_style = current_style | WS_EX_LAYERED | WS_EX_LAYERED;
     unsafe { SetWindowLongPtrW(window_handle, GWL_EXSTYLE, (new_style as LONG).try_into().unwrap()) };
 
     // Transparency parameters
@@ -63,6 +63,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     unsafe {
       SetLayeredWindowAttributes(window_handle, key_color, transparency_value, LWA_ALPHA | LWA_COLORKEY);
     }
+
+
 
   }))?;
   loop {
