@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 mouce = "0.2.43"
+winapi = { version = "0.3.9", features = ["winuser", "windef", "winnt"] }
