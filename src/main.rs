@@ -55,7 +55,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
       // Set WS_EX_LAYERED extended style
       let current_style = unsafe { GetWindowLongPtrW(window_handle, GWL_EXSTYLE) as DWORD };
 
-
       // Check if both WS_EX_LAYERED and WS_EX_TRANSPARENT are set
       // They should always be in sync. If they're not, err on caution and go to low-energy state (normal)
       let is_layered_transparent = (current_style & (WS_EX_LAYERED | WS_EX_TRANSPARENT)) == (WS_EX_LAYERED | WS_EX_TRANSPARENT);
