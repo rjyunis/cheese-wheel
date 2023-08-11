@@ -1,4 +1,4 @@
-Anyone receiving this distribution of software, its source code, and  documentation is licensed to use it in any way he or she deems fit, including copying it, modifying it, compiling it, and redistributing or selling it either with or without modifications.
+Anyone receiving this distribution of software, its source code, and documentation is licensed to use it in any way he or she deems fit, including copying it, modifying it, compiling it, and redistributing or selling it either with or without modifications.
 
 This distribution has been made available on an AS-IS basis. Any user of this software should understand that I cannot provide technical support for this software and will not be responsible for any consequences resulting from the use of this software.
 
