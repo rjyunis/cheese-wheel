@@ -5,3 +5,21 @@ version = 3
 [[package]]
 name = "cheese_wheel"
 version = "0.1.0"
+dependencies = [
+ "mouce",
+]
+
+[[package]]
+name = "glob"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d2fabcfbdc87f4758337ca535fb41a6d701b65693ce38287d856d1674551ec9b"
+
+[[package]]
+name = "mouce"
+version = "0.2.43"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4a33d9a0d590ee3a1e11ee24e8d800ec22a613558d20d7a73c16ee73b4ae5b90"
+dependencies = [
+ "glob",
+]
