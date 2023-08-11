@@ -15,9 +15,12 @@ use mouce::Mouse;
 // use mouce::MouseActions;
 
 // Interact with windows
-use winapi::um::winuser::{GetCursorPos, WindowFromPoint, GetWindowTextW, GetWindowTextLengthW};
+use winapi::um::winuser::{GetCursorPos, WindowFromPoint, GetWindowTextW, GetWindowTextLengthW, SetLayeredWindowAttributes, LWA_ALPHA, LWA_COLORKEY, SetWindowLongPtrW, GWL_EXSTYLE, WS_EX_LAYERED, GetWindowLongPtrW};
 use winapi::um::winnt::WCHAR;
-use winapi::shared::windef::POINT;
+use winapi::shared::windef::{POINT, COLORREF};
+// use winapi::shared::windef::HWND;
+use winapi::shared::ntdef::LONG;
+use winapi::shared::minwindef::DWORD;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
 
@@ -46,6 +49,20 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Convert title to rust string
     let window_title_string = String::from_utf16_lossy(&window_title);
     println!("Current window title: {}", window_title_string);
+
+    // Set WS_EX_LAYERED extended style
+    let current_style = unsafe { GetWindowLongPtrW(window_handle, GWL_EXSTYLE) as DWORD };
+    let new_style = current_style | WS_EX_LAYERED;
+    unsafe { SetWindowLongPtrW(window_handle, GWL_EXSTYLE, (new_style as LONG).try_into().unwrap()) };
+
+    // Transparency parameters
+    let transparency_value = 80; // Adjust this value as needed (0 - fully transparent, 255 - fully opaque)
+    let key_color = COLORREF::default(); // Specify a key color if needed
+
+    // Set window attributes for transparency
+    unsafe {
+      SetLayeredWindowAttributes(window_handle, key_color, transparency_value, LWA_ALPHA | LWA_COLORKEY);
+    }
 
   }))?;
   loop {
