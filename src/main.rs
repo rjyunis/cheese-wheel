@@ -34,6 +34,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 /*
+ * TODO ask tim
 fn listen(mouse_manager: Box<dyn MouseActions>) -> Int,  {
   let hook = mouse_manager.hook(Box::new(|event| {
     println!("you did{:?}", event);
