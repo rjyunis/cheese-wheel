@@ -65,7 +65,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         new_style = current_style & !(WS_EX_LAYERED | WS_EX_TRANSPARENT);
       }
       else {
-        new_style = current_style & !(WS_EX_LAYERED | WS_EX_TRANSPARENT);
+        new_style = current_style | WS_EX_LAYERED | WS_EX_TRANSPARENT;
       }
 
       unsafe { SetWindowLongPtrW(window_handle, GWL_EXSTYLE, (new_style as LONG).try_into().unwrap()) };
